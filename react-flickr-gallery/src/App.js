@@ -14,73 +14,79 @@ import Navigation from './Navigation';
 import PhotoContainer from './PhotoContainer';
 import SearchForm from './SearchForm';
 
-import Sunset from './Sunset';
+import Cats from './Cats';
+import Dogs from './Dogs';
 import Flowers from './Flowers';
-import Clouds from './Clouds';
 
 
 class App extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      photos: [],
-      imageTitle: "cats",
-      loading: true,
-      sunsetPhotos: [],
-      flowersPhotos: [],
-      cloudsPhotos: []
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     photos: [],
+  //     imageTitle: "cats",
+  //     loading: true,
+  //     sunsetPhotos: [],
+  //     flowersPhotos: [],
+  //     cloudsPhotos: []
+  //   };
+  // }
 
-  // Dynamic Photo Title
-  handleTitle = (titleValue) => {
-    this.setState({imageTitle: titleValue});
-  }
+  // // Dynamic Photo Title
+  // handleTitle = (titleValue) => {
+  //   this.setState({imageTitle: titleValue});
+  // }
 
-  componentDidMount() {
-    console.log("COMPONENT DID MOUNT ACTIVATED");
-    this.performSearch();
-    console.log("FETCHING DEFAULT PHOTOS: sunset, flowers, clouds");
-    this.fetchDefault("sunset", "sunsetPhotos");
-    this.fetchDefault("flowers", "flowersPhotos");
-    this.fetchDefault("clouds", "cloudsPhotos");
-  }
-
-  performSearch = (query = 'cats') => {
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=16&format=json&nojsoncallback=1`)
-      .then(response => {
-        this.setState({
-          photos: response.data.photos.photo,
-          loading: false
-        });
-      })
-      .catch(error => {
-        console.log('Error fetching and parsing data', error);
-      });
-  }
-
-  fetchDefault = (query, state) => {
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=16&format=json&nojsoncallback=1`)
-      .then(response => {
-        this.setState({
-          [state]: response.data.photos.photo,
-        });
-      })
-      .catch(error => {
-        console.log('Error fetching and parsing data', error);
-      });
-  }
+  // componentDidMount() {
+  //   console.log("COMPONENT DID MOUNT ACTIVATED");
+  //   this.performSearch();
+  //   console.log("FETCHING DEFAULT PHOTOS: sunset, flowers, clouds");
+  //   this.fetchDefault("sunset", "sunsetPhotos");
+  //   this.fetchDefault("flowers", "flowersPhotos");
+  //   this.fetchDefault("clouds", "cloudsPhotos");
+  // }
+  //
+  // performSearch = (query = 'cats') => {
+  //   axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=16&format=json&nojsoncallback=1`)
+  //     .then(response => {
+  //       this.setState({
+  //         photos: response.data.photos.photo,
+  //         loading: false
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log('Error fetching and parsing data', error);
+  //     });
+  // }
+  //
+  // fetchDefault = (query, state) => {
+  //   axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=16&format=json&nojsoncallback=1`)
+  //     .then(response => {
+  //       this.setState({
+  //         [state]: response.data.photos.photo,
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log('Error fetching and parsing data', error);
+  //     });
+  // }
 
   render() {
-    console.log("APP RENDER()");
-    console.log(this.state.photos);
+    // console.log("APP RENDER()");
+    // console.log(this.state.photos);
     return (
         <div className="container">
 
           <SearchForm onSearch={this.performSearch} onSelectTitle={this.handleTitle} />
 
           <Navigation />
+
+          {/* BRING BACK THE LOADING LATER*/}
+          <PhotoContainer keyword="cats" apiKey={apiKey} />
+          <PhotoContainer keyword="dogs" apiKey={apiKey} />
+
+          { /*
 
           {
             (this.state.loading)
@@ -110,9 +116,13 @@ class App extends Component {
 
           }
 
-          {/* takes in a keyword and api key as props,
+          { takes in a keyword and api key as props,
             and fetches the photos and other required
-            information from the API */}
+            information from the API }
+
+          */ }
+
+
 
       </div>
     );

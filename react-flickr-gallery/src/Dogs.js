@@ -1,6 +1,6 @@
 import React from "react";
 // import PropTypes from "prop-types";
-import Photo from './Photo';
+import CurrentPhoto from './CurrentPhoto';
 import NotFound from './NotFound';
 
 // FLICKR URL FORMAT
@@ -8,9 +8,9 @@ import NotFound from './NotFound';
 // EXAMPLE
 // https://farm1.staticflickr.com/2/1418878_1e92283336_m.jpg
 
-const Sunset = props => {
+const Dogs = props => {
 
-  console.log("SUNSET PROPS DATA");
+  console.log("FLOWERS PROPS DATA");
   console.log(props.data);
 
   const results = props.data;
@@ -18,7 +18,7 @@ const Sunset = props => {
   let title = props.imageTitle;
   console.log("TITLE: " + title);
   if (results.length) {
-    photos = results.map(photo => <Photo url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
+    photos = results.map(photo => <CurrentPhoto url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
   } else {
     photos = <NotFound />
   }
@@ -33,4 +33,4 @@ const Sunset = props => {
   );
 }
 
-export default Sunset;
+export default Dogs;
