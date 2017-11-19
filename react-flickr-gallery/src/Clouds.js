@@ -8,9 +8,9 @@ import NotFound from './NotFound';
 // EXAMPLE
 // https://farm1.staticflickr.com/2/1418878_1e92283336_m.jpg
 
-const PhotoContainer = props => {
+const Clouds = props => {
 
-  console.log("PhotoContainer PROPS DATA");
+  console.log("Clouds PROPS DATA");
   console.log(props.data);
 
   const results = props.data;
@@ -33,4 +33,4 @@ const PhotoContainer = props => {
   );
 }
 
-export default PhotoContainer;
+export default Clouds;
