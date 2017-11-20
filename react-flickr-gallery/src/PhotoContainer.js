@@ -104,6 +104,7 @@ export default class PhotoContainer extends React.Component {
           <Navigation />
 
           <Route path="/search" render={ () => <SearchForm onSearch={this.performSearch} onSelectTitle={this.handleTitle} /> } />
+          <Route path="/search" render={ () => <CurrentPhotos photos={this.state.currentPhotos} title={this.state.imageTitle} /> } />
 
           <Switch>
             <Route exact path="/" render={ () => <CurrentPhotos photos={this.state.currentPhotos} title={this.state.imageTitle} /> } />

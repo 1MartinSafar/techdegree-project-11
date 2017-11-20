@@ -5,7 +5,7 @@ import NotFound from './NotFound';
 
 const CurrentPhotos = props => {
 
-  console.log("CATS PROPS DATA");
+  console.log("CURRENT PHOTOS PROPS DATA");
   console.log(props.photos);
 
   const photoSet = props.photos;
