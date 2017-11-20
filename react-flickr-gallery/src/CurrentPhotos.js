@@ -5,17 +5,24 @@ import NotFound from './NotFound';
 
 const CurrentPhotos = props => {
 
-  console.log("CURRENT PHOTOS PROPS DATA");
-  console.log(props.photos);
+  // console.log("CURRENT PHOTOS PROPS DATA");
+  // console.log(props.photos);
 
   const photoSet = props.photos;
   let photos;
   let title = props.title;
-  console.log("TITLE: " + title);
-  if (photoSet.length) {
+  // console.log("TITLE: " + title);
+
+  // TESTING
+  if (props.title === "") {
+    title = "Search Photos";
+  }
+
+  else if (photoSet.length) {
     photos = photoSet.map(photo => <Photos url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
   } else {
-    photos = <NotFound />
+    title = "";
+    photos = <NotFound />;
   }
 
   return(
@@ -34,11 +41,5 @@ const CurrentPhotos = props => {
 //   </li>
 // );
 
-// <div className="photo-container">
-//   <h2>{title}</h2>
-//   <ul>
-//     {photos}
-//   </ul>
-// </div>
 
 export default CurrentPhotos;
