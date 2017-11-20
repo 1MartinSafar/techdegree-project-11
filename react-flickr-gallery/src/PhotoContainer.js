@@ -101,14 +101,16 @@ export default class PhotoContainer extends React.Component {
     return(
       <BrowserRouter>
         <div className="container">
-          <SearchForm onSearch={this.performSearch} onSelectTitle={this.handleTitle} />
           <Navigation />
+
+          <Route path="/search" render={ () => <SearchForm onSearch={this.performSearch} onSelectTitle={this.handleTitle} /> } />
 
           <Switch>
             <Route exact path="/" render={ () => <CurrentPhotos photos={this.state.currentPhotos} title={this.state.imageTitle} /> } />
             <Route path="/cats" render={ () => <Cats photos={this.state.catsPhotos} title="Cats" /> } />
             <Route path="/dogs" render={ () => <Dogs photos={this.state.dogsPhotos} title="Dogs" /> } />
             <Route path="/flowers" render={ () => <Flowers photos={this.state.flowersPhotos} title="Flowers" /> } />
+
           </Switch>
         </div>
       </BrowserRouter>
@@ -116,6 +118,7 @@ export default class PhotoContainer extends React.Component {
   }
 }
 
+// <SearchForm onSearch={this.performSearch} onSelectTitle={this.handleTitle} />
 // <Route exact path="/" component={Home} />
 
 // <Route path="/cats" component={Cats photos={this.state.catsPhotos}} />
