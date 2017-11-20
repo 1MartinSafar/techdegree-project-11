@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+
 import CurrentPhoto from './CurrentPhoto';
 import NotFound from './NotFound';
 
@@ -10,15 +10,15 @@ import NotFound from './NotFound';
 
 const Flowers = props => {
 
-  console.log("Clouds PROPS DATA");
-  console.log(props.data);
+  console.log("DOGS PROPS DATA");
+  console.log(props.photos);
 
-  const results = props.data;
+  const photoSet = props.photos;
   let photos;
-  let title = props.imageTitle;
+  let title = props.title;
   console.log("TITLE: " + title);
-  if (results.length) {
-    photos = results.map(photo => <CurrentPhoto url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
+  if (photoSet.length) {
+    photos = photoSet.map(photo => <CurrentPhoto url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
   } else {
     photos = <NotFound />
   }

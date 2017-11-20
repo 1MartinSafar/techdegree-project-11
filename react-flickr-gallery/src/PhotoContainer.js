@@ -1,10 +1,24 @@
 import React from "react";
+// import React, { Component } from 'react';
 // import PropTypes from "prop-types";
+import axios from 'axios';
+import apiKey from './config.js';
+// React Router
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom';
+// App Components
 import CurrentPhoto from './CurrentPhoto';
 import NotFound from './NotFound';
 
-import axios from 'axios';
-import apiKey from './config.js';
+import Navigation from './Navigation';
+import SearchForm from './SearchForm';
+
+import Cats from './Cats';
+import Dogs from './Dogs';
+import Flowers from './Flowers';
 
 // FLICKR URL FORMAT
 // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
@@ -83,14 +97,22 @@ export default class PhotoContainer extends React.Component {
     }
 
     return(
-      <div className="photo-container">
-        <h2>{title}</h2>
-        <ul>
-          {photos}
-        </ul>
-      </div>
+      <BrowserRouter>
+        <div className="container">
+          <SearchForm onSearch={this.performSearch} onSelectTitle={this.handleTitle} />
+          <Navigation />
+
+          <Switch>
+            <Route path="/cats" render={ () => <Cats photos={this.state.catsPhotos} title="Cats" /> } />
+            <Route path="/dogs" render={ () => <Dogs photos={this.state.dogsPhotos} title="Dogs" /> } />
+            <Route path="/flowers" render={ () => <Flowers photos={this.state.flowersPhotos} title="Flowers" /> } />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
 
+// <Route path="/cats" component={Cats photos={this.state.catsPhotos}} />
+// <Route path="/cats" render={ () => <PhotoContainer keyword="cats" apiKey={apiKey} /> } />
 // export default PhotoContainer;
