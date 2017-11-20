@@ -3,9 +3,9 @@ import React from "react";
 import Photos from './Photos';
 import NotFound from './NotFound';
 
-const Flowers = props => {
+const CurrentPhotos = props => {
 
-  console.log("DOGS PROPS DATA");
+  console.log("CATS PROPS DATA");
   console.log(props.photos);
 
   const photoSet = props.photos;
@@ -28,4 +28,17 @@ const Flowers = props => {
   );
 }
 
-export default Flowers;
+// const CurrentPhoto = props => (
+//   <li>
+//     <img src={props.url} alt="" width="220" height="165"/>
+//   </li>
+// );
+
+// <div className="photo-container">
+//   <h2>{title}</h2>
+//   <ul>
+//     {photos}
+//   </ul>
+// </div>
+
+export default CurrentPhotos;

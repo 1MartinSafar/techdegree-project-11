@@ -10,7 +10,7 @@ import {
   Switch
 } from 'react-router-dom';
 // App Components
-import CurrentPhoto from './CurrentPhoto';
+import Photos from './Photos';
 import NotFound from './NotFound';
 
 import Navigation from './Navigation';
@@ -19,6 +19,8 @@ import SearchForm from './SearchForm';
 import Cats from './Cats';
 import Dogs from './Dogs';
 import Flowers from './Flowers';
+
+import CurrentPhotos from './CurrentPhotos';
 
 // FLICKR URL FORMAT
 // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
@@ -91,7 +93,7 @@ export default class PhotoContainer extends React.Component {
     let title = this.state.imageTitle;
     console.log("TITLE: " + title);
     if (results.length) {
-      photos = results.map(photo => <CurrentPhoto url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
+      photos = results.map(photo => <Photos url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
     } else {
       photos = <NotFound />
     }
@@ -103,6 +105,7 @@ export default class PhotoContainer extends React.Component {
           <Navigation />
 
           <Switch>
+            <Route exact path="/" render={ () => <CurrentPhotos photos={this.state.currentPhotos} title={this.state.imageTitle} /> } />
             <Route path="/cats" render={ () => <Cats photos={this.state.catsPhotos} title="Cats" /> } />
             <Route path="/dogs" render={ () => <Dogs photos={this.state.dogsPhotos} title="Dogs" /> } />
             <Route path="/flowers" render={ () => <Flowers photos={this.state.flowersPhotos} title="Flowers" /> } />
@@ -112,6 +115,8 @@ export default class PhotoContainer extends React.Component {
     );
   }
 }
+
+// <Route exact path="/" component={Home} />
 
 // <Route path="/cats" component={Cats photos={this.state.catsPhotos}} />
 // <Route path="/cats" render={ () => <PhotoContainer keyword="cats" apiKey={apiKey} /> } />

@@ -1,6 +1,6 @@
 import React from "react";
 
-import CurrentPhoto from './CurrentPhoto';
+import Photos from './Photos';
 import NotFound from './NotFound';
 
 // FLICKR URL FORMAT
@@ -18,7 +18,7 @@ const Cats = props => {
   let title = props.title;
   console.log("TITLE: " + title);
   if (photoSet.length) {
-    photos = photoSet.map(photo => <CurrentPhoto url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
+    photos = photoSet.map(photo => <Photos url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
   } else {
     photos = <NotFound />
   }

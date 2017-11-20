@@ -1,12 +1,6 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+// import React, { Component } from 'react';
+import React from 'react';
 import apiKey from './config.js';
-// React Router
-import {
-  BrowserRouter,
-  Route,
-  Switch
-} from 'react-router-dom';
 // App Components
 import PhotoContainer from './PhotoContainer';
 
