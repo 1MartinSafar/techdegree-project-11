@@ -19,7 +19,6 @@ import SearchForm from './SearchForm';
 import Cats from './Cats';
 import Dogs from './Dogs';
 import Flowers from './Flowers';
-
 import CurrentPhotos from './CurrentPhotos';
 
 // FLICKR URL FORMAT
