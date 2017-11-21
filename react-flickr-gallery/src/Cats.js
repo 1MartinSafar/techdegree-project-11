@@ -1,7 +1,6 @@
 import React from "react";
 
 import Photos from './Photos';
-import NotFound from './NotFound';
 
 // const Dogs = props => {
 class Cats extends React.Component {
