@@ -1,36 +1,30 @@
 import React, { Component } from 'react';
 
-// export default class SearchForm extends Component {
+// This component handles the searching functionality
+// and dynamically displays the name of the searched topic
 class SearchForm extends Component {
 
+  // Keeps track of the currently searched topic
   state = {
     searchText: ''
   }
 
+  // Updates the searchText in its state when the user's entering the topic
   onSearchChange = e => {
     this.setState({ searchText: e.target.value });
   }
 
+  // When the user submits the search field by clicking Enter,
+  // this function tells the PhotoContainer to fetch the searched photos
+  // and updates the PhotoContainer's title + resets the search field
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSearch(this.query.value);
     this.props.onSelectTitle(this.query.value);
     e.currentTarget.reset();
-
-    // TESTING
-    // let searchTopic = this.topic.value;
-    // let searchTopic = this.query.value;
-    // let path = `search/${searchTopic}`;
-    // this.props.history.push(path);
-    // console.log(this.props.path);
-    // hashHistory.push(path);
   }
 
-  handleTitleChange = () => {
-    let title = this.state.searchText;
-    this.props.onSelectTitle(title);
-  }
-
+  // Renders the search field
   render() {
     return (
       <form className="search-form" onSubmit={this.handleSubmit} >
@@ -52,11 +46,3 @@ class SearchForm extends Component {
 }
 
 export default SearchForm;
-
-
-
-
-
-
-
-//

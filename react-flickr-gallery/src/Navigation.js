@@ -1,8 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-
 import { NavLink } from 'react-router-dom';
 
+// The site's navigation links - the default photos and a search field
 const Navigation = props => (
   <nav className="main-nav">
     <ul>
@@ -13,9 +12,5 @@ const Navigation = props => (
     </ul>
   </nav>
 );
-
-// Navigation.propTypes = {
-//
-// };
 
 export default Navigation;

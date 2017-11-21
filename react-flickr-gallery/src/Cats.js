@@ -1,23 +1,25 @@
 import React from "react";
 
+// The component responsible for displaying actual images
 import Photos from './Photos';
 
-// const Dogs = props => {
+// This component displaying one of the default topics provided in the navigation
 class Cats extends React.Component {
 
+  // Each time the user gets to this component, new data is fetched
+  // using the passed-down fetching function from PhotoContainer
   componentDidMount() {
       this.props.fetch("cats", "catsPhotos");
   }
 
+  // Takes care of the presentation of the photos by passing each photo from the
+  // passed-down set to the Photos component which displays each photo
+  // (if there is a set of photos)
   render() {
-
-    // console.log("CATS PROPS DATA");
-    // console.log(this.props.photos);
-
     const photoSet = this.props.photos;
     let photos;
     let title = this.props.title;
-    // console.log("TITLE: " + title);
+    // Passing the url based on the Flickr API down to the Photos component
     if (photoSet.length) {
       photos = photoSet.map(photo => <Photos url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
     }
