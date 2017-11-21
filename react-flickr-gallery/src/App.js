@@ -6,7 +6,7 @@ import apiKey from './config.js';
 // App Components => fetching happens in the PhotoContainer and passes the data
 // down to the components that handle the displaying part
 // The PhotoContainer also provides the main structure of the website and routing
-import PhotoContainer from './PhotoContainer';
+import PhotoContainer from './Components/PhotoContainer';
 
 // Creates the main wrapper for the website and gives the apiKey to the PhotoContainer
 const App = () => (
