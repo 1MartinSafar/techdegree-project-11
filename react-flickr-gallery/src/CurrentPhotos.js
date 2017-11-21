@@ -3,7 +3,11 @@ import React from "react";
 import Photos from './Photos';
 import NotFound from './NotFound';
 
-const CurrentPhotos = props => {
+const CurrentPhotos = (props, {match}) => {
+// const CurrentPhotos = ({match}) => {
+
+  /// TESTING
+  // let name = match.params.name;
 
   // console.log("CURRENT PHOTOS PROPS DATA");
   // console.log(props.photos);
@@ -13,7 +17,6 @@ const CurrentPhotos = props => {
   let title = props.title;
   // console.log("TITLE: " + title);
 
-  // TESTING
   if (props.title === "") {
     title = "Search Photos";
   }

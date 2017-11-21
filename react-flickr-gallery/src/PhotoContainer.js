@@ -53,26 +53,24 @@ export default class PhotoContainer extends React.Component {
   }
 
   fetchDefault = (query, state) => {
+    this.setState({
+      loading: true
+    });
     console.log("     X          ");
     console.log("      X         ");
     console.log("       X        ");
-    console.log("        X       ");
-    console.log("         X      ");
-    console.log("          X     ");
     console.log("FETCHING PHOTOS FOR: ");
     console.log(query + " >> " + state);
     console.log("     X          ");
     console.log("      X         ");
     console.log("       X        ");
-    console.log("        X       ");
-    console.log("         X      ");
-    console.log("          X     ");
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=16&format=json&nojsoncallback=1`)
       .then(response => {
         console.log("fetchDefault RESPONSE >>>>>");
         console.log(response.data.photos.photo);
         this.setState({
           [state]: response.data.photos.photo,
+          loading: false
         });
       })
       .catch(error => {
@@ -82,20 +80,17 @@ export default class PhotoContainer extends React.Component {
 
   // Searching for photos and displaying the default photos
   performSearch = (query = 'cats') => {
+    this.setState({
+      loading: true
+    });
     console.log("     X          ");
     console.log("      X         ");
     console.log("       X        ");
-    console.log("        X       ");
-    console.log("         X      ");
-    console.log("          X     ");
     console.log("UPDATING CURRENT PHOTOS TO: ");
     console.log(query);
     console.log("     X          ");
     console.log("      X         ");
     console.log("       X        ");
-    console.log("        X       ");
-    console.log("         X      ");
-    console.log("          X     ");
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=16&format=json&nojsoncallback=1`)
       .then(response => {
         console.log("performSearch RESPONSE >>>>>");
@@ -142,6 +137,10 @@ export default class PhotoContainer extends React.Component {
           <Navigation />
 
           <Route path="/search" render={ () => <SearchForm onSearch={this.performSearch} onSelectTitle={this.handleTitle} /> } />
+
+          <h1 style={{display: this.state.loading ? 'block' : 'none' }}><br/>Loading...</h1>
+
+
           <Route path="/search" render={ () => <CurrentPhotos photos={this.state.currentPhotos} title={this.state.imageTitle} /> } />
 
           <Switch>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-export default class SearchForm extends Component {
+// export default class SearchForm extends Component {
+class SearchForm extends Component {
 
   state = {
     searchText: ''
@@ -13,12 +14,18 @@ export default class SearchForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSearch(this.query.value);
-    // TEST
     this.props.onSelectTitle(this.query.value);
     e.currentTarget.reset();
+
+    // TESTING
+    // let searchTopic = this.topic.value;
+    // let searchTopic = this.query.value;
+    // let path = `search/${searchTopic}`;
+    // this.props.history.push(path);
+    // console.log(this.props.path);
+    // hashHistory.push(path);
   }
 
-  // TEST
   handleTitleChange = () => {
     let title = this.state.searchText;
     this.props.onSelectTitle(title);
@@ -31,7 +38,7 @@ export default class SearchForm extends Component {
                name="search"
                placeholder="Search"
                onChange={this.onSearchChange}
-               ref={(input) => this.query = input}
+               ref={ (input) => this.query = input}
                required />
         <button type="submit" className="search-button">
           <svg fill="#fff" height="24" viewBox="0 0 23 23" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +51,7 @@ export default class SearchForm extends Component {
   }
 }
 
-
+export default SearchForm;
 
 
 
