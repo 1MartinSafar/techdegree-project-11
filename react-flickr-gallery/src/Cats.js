@@ -21,8 +21,6 @@ class Cats extends React.Component {
     // console.log("TITLE: " + title);
     if (photoSet.length) {
       photos = photoSet.map(photo => <Photos url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} />);
-    } else {
-      photos = <NotFound />;
     }
 
     return(

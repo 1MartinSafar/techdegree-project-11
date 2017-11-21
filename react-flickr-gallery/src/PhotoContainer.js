@@ -7,11 +7,14 @@ import apiKey from './config.js';
 import {
   BrowserRouter,
   Route,
-  Switch
+  Switch,
+
+  Redirect
 } from 'react-router-dom';
 // App Components
 import Photos from './Photos';
 import NotFound from './NotFound';
+import PageNotFound from './PageNotFound';
 
 import Navigation from './Navigation';
 import SearchForm from './SearchForm';
@@ -137,20 +140,20 @@ export default class PhotoContainer extends React.Component {
           <Navigation />
 
           <Route path="/search" render={ () => <SearchForm onSearch={this.performSearch} onSelectTitle={this.handleTitle} /> } />
-
           <h1 style={{display: this.state.loading ? 'block' : 'none' }}><br/>Loading...</h1>
-
-
-          <Route path="/search" render={ () => <CurrentPhotos photos={this.state.currentPhotos} title={this.state.imageTitle} /> } />
 
           <Switch>
             {/*<Route exact path="/" render={ () => <CurrentPhotos photos={this.state.currentPhotos} title={this.state.imageTitle} /> } />*/}
             {/*<Route exact path="/" render={ () => <Cats photos={this.state.catsPhotos} title="Cats" /> } />*/}
-            <Route exact path="/" render={ () => <CurrentPhotos photos={this.state.currentPhotos} title="Cats" /> } />
+
+            {/*<Route exact path="/" render={ () => <CurrentPhotos photos={this.state.currentPhotos} title="Cats" /> } />*/}
+            <Route exact path="/" render={ () => <Redirect to="/cats"/> } />
             <Route path="/cats" render={ () => <Cats fetch={this.fetchDefault} photos={this.state.catsPhotos} title="Cats" /> } />
             <Route path="/dogs" render={ () => <Dogs fetch={this.fetchDefault} photos={this.state.dogsPhotos} title="Dogs" /> } />
             <Route path="/flowers" render={ () => <Flowers fetch={this.fetchDefault} photos={this.state.flowersPhotos} title="Flowers" /> } />
+            <Route path="/search" render={ () => <CurrentPhotos photos={this.state.currentPhotos} title={this.state.imageTitle} /> } />
 
+            <Route component={PageNotFound} />
           </Switch>
         </div>
       </BrowserRouter>
