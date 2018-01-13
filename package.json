@@ -1,8 +1,8 @@
 {
-  "homepage": "https://1martinsafar.github.io/techdegree-project-11",
   "name": "react-flickr-gallery",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://1martinsafar.github.io/techdegree-project-11",
   "dependencies": {
     "axios": "^0.17.1",
     "gh-pages": "^1.1.0",
