@@ -5,7 +5,7 @@ import axios from 'axios';
 
 // React Router
 import {
-  BrowserRouter,
+  HashRouter,
   Route,
   Switch,
   Redirect
@@ -102,7 +102,7 @@ export default class PhotoContainer extends React.Component {
   // are used as a default display - the default page gets redirected to Cats by default
   render() {
     return(
-      <BrowserRouter>
+      <HashRouter>
         <div className="container">
           <Navigation />
 
@@ -119,7 +119,7 @@ export default class PhotoContainer extends React.Component {
             <Route component={PageNotFound} />
           </Switch>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
